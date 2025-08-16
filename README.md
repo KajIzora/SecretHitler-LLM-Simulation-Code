@@ -104,7 +104,7 @@ Each run produces a **game log** containing:
 * Trust Scores
 * Final game result (winning side and reasoning trace)
 
-These logs provide the qualitative and quantitative data analyzed in the paper.
+These logs provide the qualitative and quantitative data analyzed in the paper. See Example_Game_Log.txt for an example of a game log from a full run of the simulation. 
 
 ---
 
