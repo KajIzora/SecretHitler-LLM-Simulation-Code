@@ -41,13 +41,21 @@ These experiments form the basis of the published paper.
      ```bash
      export OPENAI_API_KEY="your_api_key_here"
      ```
-4. Run the simulation with default settings:
+4. Run the simulation:
+
+   Start with a smoke test to make sure it functions. This just runs the nomination phase. If this works, the full simulation should run.
+
+   ```bash
+   python smoke_test.py
+   ```
+
+   Then run the full simulation
 
    ```bash
    python secret_hitler.py
    ```
 
-   This runs the simulations with the settings:
+   This runs the simulations with the default settings:
 
    ```bash
    python secret_hitler.py \
