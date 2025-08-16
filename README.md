@@ -2,6 +2,8 @@
 
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
+Tested with Python 3.11.8
+
 This repository contains the research code accompanying the paper:
 **[Exploring the Potential of Large Language Models (LLMs) to Simulate Social Group Dynamics: A Case Study Using the Board Game *Secret Hitler*](https://orb.binghamton.edu/nejcs/vol7/iss2/5/)**, published in the *Northeast Journal of Complex Systems* (2025).
 
