@@ -11,14 +11,42 @@ import concurrent.futures
 import json
 from functools import partial
 import random
+import argparse
+from dotenv import load_dotenv
+
+
+
+
+#region Arguments
+def parse_args():
+    parser = argparse.ArgumentParser(description="Secret Hitler LLM Simulation")
+    parser.add_argument("--model", type=str, default="gpt-4o-mini",
+                        choices=["gpt-4o", "gpt-4o-mini"],
+                        help="Model to use for the agents.")
+    parser.add_argument("--games", type=int, default=1,
+                        help="Number of games to run in parallel.")
+    parser.add_argument("--logdir", type=str, default="logs",
+                        help="Directory to save game logs. If you keep it as logs, it will save to the logs folder in the current directory.")
+    parser.add_argument("--player_type", type=int, default=1,
+                        choices=[1, 2, 3],
+                        help="Type of player setup to use for the agents. 1 = default, 2 = personalities, 3 = relationships.")
+    parser.add_argument("--run_number", type=int, default=1,
+                        help="The run number of the game. If you use this, the log directory will be game_logs_run_number_game_id. Change so old logs are not overwritten.")
+    return parser.parse_args()
+
+#endregion
+
 
 #region OpenAI API Key
 # Set your OpenAI API key
-key = "OPENAI_API_KEY"
 
+# Load variables from .env into environment
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
 
 # Alias the client for convenience
-client = OpenAI(api_key=key)
+client = OpenAI(api_key=api_key)
 #endregion
 
 
@@ -476,6 +504,8 @@ def get_player_list(player_name):
 
 def create_assistant_for_player(player, team = None):
     
+    args = parse_args()
+    
     other_notes = f"""Other Notes:
 - Whenever "you" is used, it is referring to you. For example, "You said..." refers to your statement, "You nominated..." refers to your nomination, "You voted..." refers to your vote, etc.
 - Your name is unique. If your name is used, it is referring to you. For example, "{player.name} said..." refers to your statement, "{player.name} nominated..." refers to your nomination, "{player.name} voted..." refers to your vote, etc. 
@@ -596,7 +626,7 @@ The Game Rules are:
     assistant = client.beta.assistants.create(
         name=f"{player.name}'s Assistant",
         instructions=instructions,
-        model='gpt-4o-mini',  
+        model=args.model,  
         temperature=0.7,
         top_p=1
     )
@@ -2866,6 +2896,8 @@ def run_game_instance(game_id, game_log_run_number, player_type):
     
     print(f"Running game instance {game_id} with player type {player_type}")
     
+    args = parse_args()
+    
     
     # start a game clock
     start_time = time.time()
@@ -2875,7 +2907,11 @@ def run_game_instance(game_id, game_log_run_number, player_type):
     print(game_id)
     
     # create a folder for the game logs
-    log_folder_path = f"game_logs_{game_log_run_number}_{game_id}"
+    if args.logdir == "logs":
+        log_folder_path = f"game_logs_{game_log_run_number}_{game_id}"
+    else:
+        log_folder_path = f"{args.logdir}/{game_log_run_number}_{game_id}"
+        
     if not os.path.exists(log_folder_path):
         os.makedirs(log_folder_path)
     
@@ -3010,12 +3046,14 @@ def main():
     
     print("Starting game...")
     
+    args = parse_args()
+    
     # If you want to run a single game, keep num_games = 1
-    num_games = 1
-    game_log_run_number = 1
+    num_games = args.games 
+    game_log_run_number = args.run_number
     game_log_run_number = f"run_{game_log_run_number}"
     
-    player_type = 1 # 1 = default, 2 = personalities, 3 = relationships
+    player_type = args.player_type # 1 = default, 2 = personalities, 3 = relationships
     
     run_game_with_folder = partial(run_game_instance, 
                                  game_log_run_number=game_log_run_number,
