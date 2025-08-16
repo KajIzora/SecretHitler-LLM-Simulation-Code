@@ -49,7 +49,7 @@ These experiments form the basis of the published paper.
 
    ```bash
    python secret_hitler.py \
-   --model gpt-4o \
+   --model gpt-4o-mini \
    --games 1 \
    --logdir logs \
    --player_type 1 \
