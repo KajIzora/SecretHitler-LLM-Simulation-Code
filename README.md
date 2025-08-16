@@ -19,21 +19,56 @@ These experiments form the basis of the published paper.
 
 ## How to Run
 
-1. Clone this repository.
-2. Install dependencies:
+1. **Clone this repository.**
+
+2. **Install dependencies:**
 
    ```bash
    pip install -r requirements.txt
    ```
-3. Set your OpenAI API key as an environment variable:
+
+3. **Set your OpenAI API key as an environment variable (recommended):**
 
    ```bash
    export OPENAI_API_KEY="your_api_key_here"
    ```
-4. Run the simulation:
+
+   Or place it in a `.env` file in the project root:
+
+   ```
+   OPENAI_API_KEY=your_api_key_here
+   ```
+
+4. **Run the simulation with default settings:**
 
    ```bash
    python secret_hitler.py
+   ```
+
+5. **Optional: customize the run with arguments.**
+   The script accepts several CLI arguments:
+
+   * `--model {gpt-4o,gpt-4o-mini}` → Choose the model (default: `gpt-4o`).
+   * `--games <int>` → Number of games to run in parallel (default: `1`).
+   * `--logdir <path>` → Directory to save game logs (default: `logs`).
+   * `--player_type {1,2,3}` → Agent setup mode:
+
+     * `1` = default
+     * `2` = personalities
+     * `3` = relationships
+   * `--run_number <int>` → Run identifier to prevent overwriting logs (default: `1`).
+
+   **Example run with custom options:**
+
+   ```bash
+   python secret_hitler.py --model gpt-4o-mini --games 3 --player_type 2 --run_number 5 --logdir outputs/
+   ```
+
+6. **View help menu:**
+   For the full list of arguments at any time, run:
+
+   ```bash
+   python secret_hitler.py --help
    ```
 
 ---
