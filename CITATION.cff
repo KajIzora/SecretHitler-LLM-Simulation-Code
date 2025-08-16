@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the repository and the associated paper."
+title: "SecretHitler-LLM-Simulation-Code"
+abstract: >
+  Research code accompanying the paper "Exploring the Potential of Large Language Models (LLMs)
+  to Simulate Social Group Dynamics: A Case Study Using the Board Game 'Secret Hitler'."
+  Implements an agent-based simulation with LLM-controlled players, producing game logs used
+  for qualitative and quantitative analysis.
+authors:
+  - family-names: Hansteen Izora
+    given-names: Kaj Muki
+    orcid: "https://orcid.org/0009-0008-8817-3892"
+  - family-names: Teuscher
+    given-names: Christof
+    orcid: "https://orcid.org/0000-0002-5927-1900"
+keywords:
+  - large language models
+  - multi-agent systems
+  - social reasoning
+  - theory of mind
+  - agent-based simulation
+  - Secret Hitler
+license: "CC BY-NC 4.0"
+repository-code: "https://github.com/KajIzora/SecretHitler-LLM-Simulation-Code"
+type: software
+version: "1.0.0"
+date-released: "2025-08-15"
+preferred-citation:
+  type: article
+  title: "Exploring the Potential of Large Language Models (LLMs) to Simulate Social Group Dynamics: A Case Study Using the Board Game 'Secret Hitler'"
+  authors:
+    - family-names: Izora
+      given-names: Kaj Hansteen
+      orcid: "https://orcid.org/0009-0008-8817-3892"
+    - family-names: Teuscher
+      given-names: Christof
+      orcid: "https://orcid.org/0000-0002-5927-1900"
+  journal: "Northeast Journal of Complex Systems"
+  year: 2025
+  doi: "10.63562/2577-8439.1111"
+  url: "https://doi.org/10.63562/2577-8439.1111"
