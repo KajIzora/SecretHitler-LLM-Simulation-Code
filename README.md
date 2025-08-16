@@ -35,13 +35,12 @@ These experiments form the basis of the published paper.
    ```ini
    OPENAI_API_KEY=Your_OpenAI_API_Key
    ```
-   
-5. Install dependencies:
+3. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
-6. Run the simulation:
+4. Run the simulation:
 
    Start with a smoke test to make sure it functions. This just runs the nomination phase. If this works, the full simulation should run.
 
@@ -67,7 +66,7 @@ These experiments form the basis of the published paper.
    ```
 
    
-7. (Optional) Customize the run with arguments. For example:
+5. (Optional) Customize the run with arguments. For example:
 
    ```bash
    python secret_hitler.py \
@@ -84,7 +83,7 @@ These experiments form the basis of the published paper.
    * `--run_number` → gives each run a unique ID to avoid overwriting logs
    * `--logdir` → directory where logs are saved. By default logs are saved in the current directory.
   
-8. To see all available options, run:
+6. To see all available options, run:
 
    ```bash
    python secret_hitler.py --help
