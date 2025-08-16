@@ -74,7 +74,7 @@ These experiments form the basis of the published paper.
    * `--games` → number of games to run in parallel.
    * `--player_type` → agent setup: 1 = default, 2 = personalities, 3 = relationships
    * `--run_number` → gives each run a unique ID to avoid overwriting logs
-   * `--logdir` → directory where logs are saved. By defult logs are saved in the current directory.
+   * `--logdir` → directory where logs are saved. By default logs are saved in the current directory.
   
 7. To see all available options, run:
 
