@@ -49,11 +49,11 @@ These experiments form the basis of the published paper.
 
    ```bash
    python secret_hitler.py \
-  --model gpt-4o \
-  --games 1 \
-  --logdir logs \
-  --player_type 1 \
-  --run_number 1
+   --model gpt-4o \
+   --games 1 \
+   --logdir logs \
+   --player_type 1 \
+   --run_number 1
    ```
 
    
