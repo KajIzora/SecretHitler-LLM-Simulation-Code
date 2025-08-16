@@ -1,0 +1,26 @@
+# Ignore environment files (secrets)
+.env
+
+# Logs
+*.log
+logs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Jupyter / VSCode stuff
+.ipynb_checkpoints/
+.vscode/
