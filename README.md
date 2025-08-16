@@ -67,7 +67,11 @@ These logs provide the qualitative and quantitative data analyzed in the paper.
 * This is **research code** supporting the above publication, not production-ready software.
 * Results will vary slightly between runs due to stochasticity in LLM outputs.
 * See the paper for a full discussion of methodology and findings.
-* On average, a full game uses about 1.5 million tokens. The cost of a full game with gpt-4o is about $4.00. The cost for gpt-4o-mini is about $0.25. 
+* Cost Scaling: Each agent query re-sends the full game history, so token usage grows with game length.
+   * On average, a full game uses about 1.5 million tokens. The cost of a full game with gpt-4o is about $4.00. The cost for gpt-4o-mini is about $0.25.
+   *  In the early game, context is short and grows each turn, so cost scales quadratically with the number of turns (each step adds the entire accumulated history).
+   *  Once the history reaches the model’s context limit (e.g. 128k tokens for GPT-4o), each query sends ~128k tokens regardless of turn. At this point, cost scales linearly with the number of turns, but at a higher constant rate.
+   *  In practice: short games are inexpensive, but very long games with many rounds will approach a “flat per-turn” cost at the maximum context size.
 
 ---
 
