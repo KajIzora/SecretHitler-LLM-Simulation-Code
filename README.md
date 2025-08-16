@@ -82,13 +82,6 @@ These experiments form the basis of the published paper.
 
 ---
 
-✅ This makes it crystal clear: default run, `.env` setup, and optional arguments.
-
-Do you also want me to add a **“Quick Test Run”** example (super cheap, one game on `gpt-4o-mini`) so reviewers can try it without worrying about costs?
-
-
----
-
 ## What Happens
 
 Running the script simulates a full game of *Secret Hitler* with LLM-controlled agents. The program will:
