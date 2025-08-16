@@ -23,7 +23,7 @@ These experiments form the basis of the published paper.
 
 1. Clone this repository.
 2. Create your .env file
-3. 
+ 
    Copy the example environment file and fill in your own API key:
    
    ```bash
@@ -33,7 +33,7 @@ These experiments form the basis of the published paper.
    Open `.env` in a text editor and replace the placeholder with your actual key:
 
    ```ini
-   OPENAI_API_KEY=your_api_key_here
+   OPENAI_API_KEY=Your_OpenAI_API_Key
    ```
    
 5. Install dependencies:
