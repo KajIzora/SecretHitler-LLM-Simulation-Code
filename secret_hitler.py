@@ -3011,8 +3011,8 @@ def main():
     print("Starting game...")
     
     # If you want to run a single game, keep num_games = 1
-    num_games = 2
-    game_log_run_number = 3
+    num_games = 1
+    game_log_run_number = 1
     game_log_run_number = f"run_{game_log_run_number}"
     
     player_type = 1 # 1 = default, 2 = personalities, 3 = relationships
