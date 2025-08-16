@@ -19,57 +19,73 @@ These experiments form the basis of the published paper.
 
 ## How to Run
 
-1. **Clone this repository.**
-
-2. **Install dependencies:**
+1. Clone this repository.
+2. Install dependencies:
 
    ```bash
    pip install -r requirements.txt
    ```
+3. Set your OpenAI API key. You can do this in one of two ways:
 
-3. **Set your OpenAI API key as an environment variable (recommended):**
+   * Edit the `.env` file in the project and add your key:
+   * 
+     ```
+     OPENAI_API_KEY=your_api_key_here
+     ```
 
-   ```bash
-   export OPENAI_API_KEY="your_api_key_here"
-   ```
+     This will be loaded automatically when you run the script.
+   * Or set it directly in your terminal:
 
-   Or place it in a `.env` file in the project root:
-
-   ```
-   OPENAI_API_KEY=your_api_key_here
-   ```
-
-4. **Run the simulation with default settings:**
+     ```bash
+     export OPENAI_API_KEY="your_api_key_here"
+     ```
+4. Run the simulation with default settings:
 
    ```bash
    python secret_hitler.py
    ```
 
-5. **Optional: customize the run with arguments.**
-   The script accepts several CLI arguments:
-
-   * `--model {gpt-4o,gpt-4o-mini}` → Choose the model (default: `gpt-4o`).
-   * `--games <int>` → Number of games to run in parallel (default: `1`).
-   * `--logdir <path>` → Directory to save game logs (default: `logs`).
-   * `--player_type {1,2,3}` → Agent setup mode:
-
-     * `1` = default
-     * `2` = personalities
-     * `3` = relationships
-   * `--run_number <int>` → Run identifier to prevent overwriting logs (default: `1`).
-
-   **Example run with custom options:**
+   This runs the simulations with the settings:
 
    ```bash
-   python secret_hitler.py --model gpt-4o-mini --games 3 --player_type 2 --run_number 5 --logdir outputs/
+   python secret_hitler.py \
+  --model gpt-4o \
+  --games 1 \
+  --logdir logs \
+  --player_type 1 \
+  --run_number 1
    ```
 
-6. **View help menu:**
-   For the full list of arguments at any time, run:
+   
+6. (Optional) Customize the run with arguments. For example:
+
+   ```bash
+   python secret_hitler.py \
+     --model gpt-4o-mini \
+     --games 2 \
+     --player_type 2 \
+     --run_number 3 \
+     --logdir logs
+   ```
+
+   * `--model` → choose between `gpt-4o` and `gpt-4o-mini`
+   * `--games` → number of games to run in parallel.
+   * `--player_type` → agent setup: 1 = default, 2 = personalities, 3 = relationships
+   * `--run_number` → gives each run a unique ID to avoid overwriting logs
+   * `--logdir` → directory where logs are saved. By defult logs are saved in the current directory.
+  
+7. To see all available options, run:
 
    ```bash
    python secret_hitler.py --help
    ```
+
+---
+
+✅ This makes it crystal clear: default run, `.env` setup, and optional arguments.
+
+Do you also want me to add a **“Quick Test Run”** example (super cheap, one game on `gpt-4o-mini`) so reviewers can try it without worrying about costs?
+
 
 ---
 
