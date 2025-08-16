@@ -526,7 +526,7 @@ def create_assistant_for_player(player, team = None):
 
 #### **Setup**
 1. The Fascist and Hitler know who each other are. 
-2. The liberals do not know the role or party membership of any player accept themselves 
+2. The liberals do not know the role or party membership of any player except themselves.
 
 #### **Gameplay Phases**
 1. **Election**
