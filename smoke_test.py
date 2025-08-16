@@ -2569,7 +2569,6 @@ def play_game(game_state):
         
         president = alive_players[game_state.round_number % len(alive_players)]
         
-        
         game_state.current_president = president
         
         # President nominates Chancellor
@@ -2602,6 +2601,9 @@ def play_game(game_state):
         add_phase_log(game_state, president, 'nomination_phase')
         
         print_game_log(game_state, game_state.round_number, 'nomination_phase')
+        
+        break
+        
         
         #endregion
     
@@ -2859,30 +2861,7 @@ def play_game(game_state):
             
             #endregion
     
-    #region Post Game Discussion
-    
-    discussion_pool = f""
-    
-    for player in game_state.players:
-        discussion = agent_decision(player, game_state, 'discussion_post_game', discussion_pool)
-        discussion_dict = json.loads(discussion)
-        discussion_external = discussion_dict.get('external_dialogue', '')
-        
-        discussion_pool += f"{player.name} said: \n{discussion_external}\n\n"
-        
-        add_phase_log(game_state, player, 'discussion_post_game')
-    
-    print_game_log(game_state, game_state.round_number, 'discussion_post_game')
-    #endregion
-    
-    #region Post Game Reflection
-    
-    parallel_reflection(game_state, 'reflection_post_game', discussion_pool)
-        
-    print_game_log(game_state, game_state.round_number, 'reflection_post_game')
-    
-    #endregion
-
+   
     print_log_messages(game_state.log_messages_by_player, game_state)
     
 
@@ -2902,11 +2881,13 @@ def run_game_instance(game_id, game_log_run_number, player_type):
 
     # Construct a unique log file path
     
+    # create a folder for the game logs
     if args.logdir == "logs":
-        log_folder_path = f"logs/game_logs_{game_log_run_number}"
+        log_folder_path = f"logs/smoke_test_game_logs_{game_log_run_number}"
     else:
-        log_folder_path = f"{args.logdir}/game_logs_{game_log_run_number}"
-        
+        log_folder_path = f"{args.logdir}/smoke_test_game_logs_{game_log_run_number}"
+    
+
     # create a blank txt file for the log
     log_file_path = f"{log_folder_path}/{game_id}.txt"
     if not os.path.exists(log_file_path):
@@ -2914,6 +2895,7 @@ def run_game_instance(game_id, game_log_run_number, player_type):
             pass
 
     # Open the log file in write mode
+    # We'll do a try/finally pattern so we can close the file properly
     log_file = open(log_file_path, "w", buffering=1)
     
     # Redirect stdout so that any print statements go to this file
@@ -3036,13 +3018,10 @@ def main():
     
     args = parse_args()
     
-    
     # If you want to run a single game, keep num_games = 1
     num_games = args.games 
     game_log_run_number = args.run_number
     game_log_run_number = f"run_{game_log_run_number}"
-    
-
     
     player_type = args.player_type # 1 = default, 2 = personalities, 3 = relationships
     
@@ -3055,9 +3034,9 @@ def main():
     num_workers = num_games 
     
     if args.logdir == "logs":
-        log_folder_path = f"logs/game_logs_{game_log_run_number}"
+        log_folder_path = f"logs/smoke_test_game_logs_{game_log_run_number}"
     else:
-        log_folder_path = f"{args.logdir}/game_logs_{game_log_run_number}"
+        log_folder_path = f"{args.logdir}/smoke_test_game_logs_{game_log_run_number}"
         
     if not os.path.exists(log_folder_path):
         os.makedirs(log_folder_path)
@@ -3065,7 +3044,7 @@ def main():
     with ProcessPoolExecutor(max_workers=num_workers) as executor:
         print(f"Running {num_games} games with {num_workers} workers")
         results = list(executor.map(run_game_with_folder, game_ids))
-        print("All games completed!")
+        print("Smoke test completed. Everything should be working and you can start running full games.")
 
 
 if __name__ == "__main__":
