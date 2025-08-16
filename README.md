@@ -41,21 +41,7 @@ These experiments form the basis of the published paper.
    ```bash
    pip install -r requirements.txt
    ```
-6. Set your OpenAI API key. You can do this in one of two ways:
-
-   * Edit the `.env` file in the project and add your key:
-   * 
-     ```
-     OPENAI_API_KEY=your_api_key_here
-     ```
-
-     This will be loaded automatically when you run the script.
-   * Or set it directly in your terminal:
-
-     ```bash
-     export OPENAI_API_KEY="your_api_key_here"
-     ```
-7. Run the simulation:
+6. Run the simulation:
 
    Start with a smoke test to make sure it functions. This just runs the nomination phase. If this works, the full simulation should run.
 
@@ -81,7 +67,7 @@ These experiments form the basis of the published paper.
    ```
 
    
-8. (Optional) Customize the run with arguments. For example:
+7. (Optional) Customize the run with arguments. For example:
 
    ```bash
    python secret_hitler.py \
@@ -98,7 +84,7 @@ These experiments form the basis of the published paper.
    * `--run_number` → gives each run a unique ID to avoid overwriting logs
    * `--logdir` → directory where logs are saved. By default logs are saved in the current directory.
   
-9. To see all available options, run:
+8. To see all available options, run:
 
    ```bash
    python secret_hitler.py --help
